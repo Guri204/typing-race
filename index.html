@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Gurjashan Singh">
+    <meta name="description" content="My web page">
+    <meta name="keywords" content="typing game, typing practice, typing">
+    <title></title>
+    <link rel="icon" href="#" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mrspecht/cdn/reset.css" media="all">
+    <link rel="stylesheet" href="./assests/css/style.css" media="all">
+    <script src="./assests/js/app.js" defer></script>
+</head>
+<body>
+    <video autoplay loop muted playsinline id="backgroundVideo">
+        <source src="./assests/media/background-video.mp4" type="video/mp4">
+    </video>
+    <div class="container">
+        <h1>Typing race</h1>
+        <div id="gameArea">
+            <div id="wordDisplay">Press Enter to begin!</div>
+            <input type="text" id="wordInput" disabled />
+            <div id="timer">Time: <span id="timeLeft">15</span> seconds</div>
+            <div id="scoreDisplay">Hits: <span id="score">0</span></div>
+            <button id="startBtn">Start</button>
+            <button id="restartBtn" style="display: none;">Restart</button>
+        </div>
+    </div>
+    <audio id="backgroundMusic" loop>
+        <source src="./assests/audio/theme sound.mp3" type="audio/mpeg">
+    </audio>
+</body>

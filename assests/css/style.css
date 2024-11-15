@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+.container {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    margin-top: 50px;
+
+    h1 {
+        color: #fff;
+        margin-bottom: 20px;
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+#backgroundVideo {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#gameArea {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+#gameArea:hover {
+    transform: scale(1.02);
+}
+
+#wordDisplay {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    letter-spacing: 1px;
+}
+
+#wordInput {
+    width: 90%;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 2px solid #007acc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#wordInput:focus {
+    border-color: #005f99;
+}
+
+#timer, #scoreDisplay {
+    font-size: 2.0rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007acc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #005f99;
+    transform: scale(1.05);
+}
