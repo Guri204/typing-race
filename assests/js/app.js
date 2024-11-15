@@ -1,6 +1,5 @@
 'use strict';
 
-// DOM elements
 const wordDisplay = document.getElementById("wordDisplay");
 const wordInput = document.getElementById("wordInput");
 const timeDisplay = document.getElementById("timeLeft");
@@ -8,7 +7,6 @@ const scoreDisplay = document.getElementById("score");
 const startBtn = document.getElementById("startBtn");
 const backgroundMusic = document.getElementById("backgroundMusic");
 
-// Word bank with 200+ words
 const wordBank = [
     'dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
     'population', 'weather', 'bottle', 'history', 'dream', 'character', 'money',
@@ -43,7 +41,6 @@ const wordBank = [
     'film', 'jupiter'
     ];
 
-// Shuffle array utility function
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -52,7 +49,6 @@ function shuffle(array) {
     return array;
 }
 
-// Score class definition
 class Score {
     #date;
     #hits;
@@ -77,7 +73,7 @@ class Score {
     }
 }
 
-let gameWords = shuffle([...wordBank]); // Shuffled words for the game
+let gameWords = shuffle([...wordBank]);
 let currentWordIndex = 0;
 let score = 0;
 let timeLeft = 15;
@@ -86,8 +82,6 @@ let isGameActive = false;
 let scoresArray = [];
 
 
-
-// Start the game
 function startGame() {
     if (isGameActive) return;
     isGameActive = true;
@@ -110,7 +104,6 @@ function startGame() {
     timer = setInterval(updateTimer, 1000);
 }
 
-// Update timer and end game when time runs out
 function updateTimer() {
     if (timeLeft > 0) {
         timeLeft--;
@@ -120,7 +113,6 @@ function updateTimer() {
     }
 }
 
-// Check input on each keystroke
 wordInput.addEventListener("input", () => {
     if (wordInput.value.trim() === gameWords[currentWordIndex]) {
         score++;
@@ -128,7 +120,7 @@ wordInput.addEventListener("input", () => {
         currentWordIndex++;
 
         if (currentWordIndex >= gameWords.length) {
-            endGame(); // All words completed
+            endGame();
         } else {
             wordDisplay.textContent = gameWords[currentWordIndex];
             wordInput.value = "";
@@ -136,44 +128,23 @@ wordInput.addEventListener("input", () => {
     }
 });
 
-// End the game
 function endGame() {
     isGameActive = false;
     clearInterval(timer);
     backgroundMusic.pause();
     wordInput.disabled = true;
     startBtn.style.display = "inline";
-    // restartBtn.style.display = "inline"; // Show restart button
+
 
     const newScore = new Score(score, currentWordIndex + 1);
     scoresArray.push(newScore);
 
-    // // Update the score summary message
-    // const scoreSummary = document.getElementById("scoreSummary");
-    // scoreSummary.innerHTML = `
-    //     <p>Game Over! Your final score is: ${score} words.</p>
-    //     <p>Date: ${newScore.getDate().toLocaleString()}</p>
-    //     <p>Accuracy: ${newScore.getPercentage()}%</p>
-    // `;
-    // scoreSummary.style.display = "block"; // Show the score summary
 
-    console.log("Scores:", scoresArray); // For debugging
+    console.log("Scores:", scoresArray);
 }
 
-
-// // Restart the game
-// restartBtn.addEventListener("click", () => {
-//     wordBank.push(...[
-//         'star', 'forest', 'journey', 'mirror', 'shadow', 
-//         'rose', 'fire', 'ocean', 'field', 'cloud'
-//     ]);
-//     startGame();
-// });
-
-// Start button event
 startBtn.addEventListener("click", startGame);
 
-// Pause game with ESC key
 document.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !isGameActive) {
         startGame();
